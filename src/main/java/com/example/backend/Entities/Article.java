@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Getter
 @Setter
@@ -27,6 +29,7 @@ public class Article {
     private List<Contribution> contributions;
 
     @ManyToOne
-    @JoinColumn(name = "domaine_id", nullable = false)
+    @JoinColumn(name = "domaine_id")
+     @JsonBackReference
     private Domain domain;
 }

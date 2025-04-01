@@ -1,6 +1,8 @@
 package com.example.backend.Entities;
 
 import com.example.backend.Enum.Role;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +30,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Contribution> contributions;
+  
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+@JsonManagedReference
+private List<Contribution> contributions;
 }

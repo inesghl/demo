@@ -2,6 +2,8 @@ package com.example.backend.Entities;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,10 +23,12 @@ public class Contribution {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user; // Ensure this field is present
+    @JsonBackReference
+    private User user; 
 
     @ManyToOne
     @JoinColumn(name = "article_id", nullable = false)
+     @JsonBackReference
     private Article article; 
 
     private String type; 
